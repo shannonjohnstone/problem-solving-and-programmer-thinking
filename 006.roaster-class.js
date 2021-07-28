@@ -21,6 +21,15 @@ class Students {
     this.currentId++;
   }
 
+  letterGrade(id) {
+    if (!id) return "No id supplied";
+    const grade = this.grade(id);
+
+    if (grade > 90) return "A";
+    if (grade > 50) return "B";
+    return "C";
+  }
+
   grade(id) {
     if (!id) return "No id supplied";
     return this.studentsGrades[id];
@@ -63,5 +72,7 @@ console.log(grades.recordGrade({ grade: 70, name: "Chris" }));
 console.log(grades.averageGrade());
 console.log(grades.students());
 console.log(grades.removeGrade(2));
+console.log(grades.grade(1));
+console.log(grades.letterGrade(1));
 console.log(grades.students());
 console.log(grades.averageGrade());
