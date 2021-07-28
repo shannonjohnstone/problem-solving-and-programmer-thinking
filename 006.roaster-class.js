@@ -7,8 +7,7 @@
  * - view student grades, as a score and letter
  * - view average score of class
  */
-
-class Students {
+class Grades {
   studentsGrades = {};
   currentId = 1;
 
@@ -17,6 +16,8 @@ class Students {
   }
 
   recordGrade(grade = {}) {
+    if (!grade) return "No student grade supplied";
+
     this.studentsGrades[this.currentId] = grade;
     this.currentId++;
   }
@@ -53,7 +54,7 @@ class Students {
 
   averageGrade() {
     const students = this.studentsGrades;
-    let totalGrades = 0;    
+    let totalGrades = 0;
     const totalStudents = Object.keys(students).length;
 
     Object.keys(students).forEach(index => {
@@ -65,7 +66,7 @@ class Students {
 }
 
 // Test implementation
-const grades = new Students([{ grade: 100, name: "Jack" }, { grade: 0, name: "Kim" }]);
+const grades = new Grades([{ grade: 100, name: "Jack" }, { grade: 0, name: "Kim" }]);
 console.log(grades.recordGrade({ grade: 100, name: "Bob" }));
 console.log(grades.recordGrade({ grade: 100, name: "Jamie" }));
 console.log(grades.recordGrade({ grade: 70, name: "Chris" }));
